@@ -141,9 +141,9 @@ export default function Achievements() {
         <FadeIn direction="left" className="flex gap-8 lg:gap-16 relative">
 
           {/* Left Spacer for Traveling Year Label */}
-          <div className="hidden md:block w-32 lg:w-48 shrink-0 relative" />
+          <div className="w-24 md:w-32 lg:w-48 shrink-0 relative transition-all duration-300" />
 
-          <div className="flex-1 relative pl-8 md:pl-12">
+          <div className="flex-1 relative pl-6 md:pl-12">
 
             {/* Timeline Line Container */}
             <div className="absolute left-0 top-6 bottom-6 w-0.5 bg-border/40 rounded-full">
@@ -159,7 +159,7 @@ export default function Achievements() {
                 className="absolute -left-[6px] -translate-y-1/2 w-0.5 h-0 flex items-center justify-end z-40 pointer-events-none"
               >
                 {/* Container for Year Text - Positioned to the left */}
-                <div className="hidden md:block absolute right-8 top-1/2 -translate-y-1/2 pr-4">
+                <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 pr-2 md:pr-4">
                   <AnimatePresence mode="popLayout">
                     <motion.div
                       key={activeYear}
@@ -176,7 +176,7 @@ export default function Achievements() {
                         scale: 0.8,
                         transition: { duration: 0.3 }
                       }}
-                      className="text-6xl font-bold bg-gradient-to-br from-primary via-secondary to-primary bg-clip-text text-transparent whitespace-nowrap origin-right relative"
+                      className="text-3xl md:text-6xl font-bold bg-gradient-to-br from-primary via-secondary to-primary bg-clip-text text-transparent whitespace-nowrap origin-right relative"
                     >
                       {activeYear}
                       <MilestoneExplosion />
@@ -207,11 +207,7 @@ export default function Achievements() {
                   onViewportEnter={() => setActiveYear(yearGroup.year)}
                   className="relative"
                 >
-                  {/* Mobile Year Header */}
-                  <div className="md:hidden mb-8 flex items-center gap-4">
-                    <span className="text-4xl font-bold text-primary">{yearGroup.year}</span>
-                    <div className="h-0.5 flex-grow bg-gradient-to-r from-primary/50 to-transparent" />
-                  </div>
+                  {/* Mobile Year Header - Removed to use the main travelling label on mobile too */}
 
                   <StaggerContainer className="space-y-10">
                     {yearGroup.items.map((item, index) => (

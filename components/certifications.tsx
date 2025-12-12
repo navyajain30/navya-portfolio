@@ -145,7 +145,7 @@ export default function Certifications() {
                                 <div className="absolute top-0 left-0 right-0 h-12 bg-card/90 backdrop-blur border-b border-border flex items-center justify-end px-4 z-10">
                                     <button
                                         onClick={() => setSelectedCert(null)}
-                                        className="p-1 rounded-full hover:bg-secondary transition-colors"
+                                        className="p-2 rounded-full hover:bg-secondary transition-colors"
                                     >
                                         <X className="w-6 h-6 text-foreground" />
                                     </button>

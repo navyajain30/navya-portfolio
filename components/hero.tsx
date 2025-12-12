@@ -170,6 +170,6 @@ export default function Hero() {
           <ArrowDown className="w-6 h-6 text-muted-foreground" />
         </motion.div>
       </motion.div>
-    </section>
+    </section >
   )
 }
