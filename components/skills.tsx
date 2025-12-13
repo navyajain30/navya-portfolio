@@ -1,95 +1,92 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Code, Layout, Server, Database, Brain } from "lucide-react"
+import { Code2, Layout, Database, Brain, Wrench, Users } from "lucide-react"
 import { SectionHeader, StaggerContainer, StaggerItem, FadeIn } from "@/components/ui/scroll-animation"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const skillCategories = [
   {
-    title: "Proficient Languages",
-    icon: Code,
+    title: "Languages",
+    icon: Code2,
     color: "from-blue-500 to-cyan-500",
-    skills: [
-      { name: "Python", level: 90 },
-      { name: "C++", level: 85 },
-      { name: "JavaScript", level: 88 },
-      { name: "Java", level: 80 }
-    ]
+    skills: ["Python", "C++", "Java", "JavaScript", "TypeScript", "SQL"]
+  },
+  {
+    title: "AI & Data Science",
+    icon: Brain,
+    color: "from-orange-500 to-red-500",
+    skills: ["PyTorch", "TensorFlow", "Pandas", "Scikit-learn", "RAG", "LLMs", "NLP", "Computer Vision"]
   },
   {
     title: "Frontend Development",
     icon: Layout,
     color: "from-purple-500 to-pink-500",
-    skills: [
-      { name: "React.js / Next.js", level: 92 },
-      { name: "Tailwind CSS", level: 95 },
-      { name: "HTML5 / CSS3", level: 98 },
-      { name: "Framer Motion", level: 85 }
-    ]
+    skills: ["React", "Next.js", "Tailwind CSS", "HTML5", "CSS3", "Framer Motion"]
   },
   {
-    title: "Backend & Database",
-    icon: Server,
+    title: "Backend & Databases",
+    icon: Database,
     color: "from-green-500 to-emerald-500",
-    skills: [
-      { name: "Node.js / Express", level: 88 },
-      { name: "MongoDB", level: 90 },
-      { name: "MySQL / SQL", level: 85 },
-      { name: "REST APIs", level: 92 }
-    ]
+    skills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs"]
   },
   {
-    title: "AI & Machine Learning",
-    icon: Brain,
-    color: "from-orange-500 to-red-500",
-    skills: [
-      { name: "TensorFlow / Keras", level: 85 },
-      { name: "Scikit-Learn", level: 90 },
-      { name: "OpenCV", level: 80 },
-      { name: "NLP / Large Language Models", level: 82 }
-    ]
+    title: "Tools & DevOps",
+    icon: Wrench,
+    color: "from-gray-500 to-slate-500",
+    skills: ["Git", "Docker", "VS Code", "Vercel", "Postman"]
+  },
+  {
+    title: "Soft Skills & Leadership",
+    icon: Users,
+    color: "from-pink-500 to-rose-500",
+    skills: ["Leadership", "Communication", "Problem Solving", "Team Management", "Public Speaking", "Agile/Scrum"]
   }
 ]
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-20 px-4">
+    <section id="skills" className="py-24 px-4">
       <div className="max-w-7xl mx-auto">
-        <SectionHeader title="Technical Proficiency" />
+        <SectionHeader
+          title="Technical Proficiency"
+          subtitle="A breakdown of my technical skills and tools."
+        />
 
-        <FadeIn direction="right">
-          <StaggerContainer className="grid md:grid-cols-2 gap-8 lg:gap-12">
+        <FadeIn direction="up">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {skillCategories.map((category, index) => (
               <StaggerItem
                 key={category.title}
-                className="bg-card/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-border hover:border-primary/30 transition-colors"
+                className="h-full"
               >
-                <div className="flex items-center gap-4 mb-8">
-                  <div className={`p-3 rounded-lg bg-gradient-to-r ${category.color} bg-opacity-10`}>
-                    <category.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold">{category.title}</h3>
-                </div>
-
-                <div className="space-y-6">
-                  {category.skills.map((skill, idx) => (
-                    <div key={skill.name}>
-                      <div className="flex justify-between mb-2">
-                        <span className="font-medium text-foreground/90">{skill.name}</span>
-                        <span className="text-xs text-muted-foreground">{skill.level}%</span>
-                      </div>
-                      <div className="h-2 w-full bg-secondary/20 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, delay: 0.5 + (idx * 0.1) }}
-                          className={`h-full rounded-full bg-gradient-to-r ${category.color}`}
-                        />
-                      </div>
+                <Card className="h-full bg-card/50 backdrop-blur-sm border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 group">
+                  <CardHeader className="flex flex-row items-center gap-4 pb-4">
+                    <div className={`p-3 rounded-lg bg-gradient-to-r ${category.color} bg-opacity-10 group-hover:scale-110 transition-transform duration-300`}>
+                      <category.icon className="w-6 h-6 text-white" />
                     </div>
-                  ))}
-                </div>
+                    <CardTitle className="text-xl font-bold">{category.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {category.skills.map((skill) => (
+                        <motion.div
+                          key={skill}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Badge
+                            variant="secondary"
+                            className="text-sm py-1 px-3 cursor-default hover:bg-primary/20 hover:text-primary transition-colors duration-300 border border-transparent hover:border-primary/20"
+                          >
+                            {skill}
+                          </Badge>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
               </StaggerItem>
             ))}
           </StaggerContainer>
