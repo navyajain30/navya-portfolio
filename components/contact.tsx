@@ -117,7 +117,7 @@ export default function Contact() {
       }
     } catch (error) {
       console.error(error)
-      alert("Failed to send message via API. Please ensure you have set up your .env.local credentials correctly. Check the console for details.")
+      alert("Failed to send message. Please try again later.")
     } finally {
       setIsSubmitting(false)
     }
