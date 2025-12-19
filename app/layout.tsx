@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Inter, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
+import { LoadingIntro } from "@/components/loading-intro"
 
 const _inter = Inter({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -26,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`font-sans antialiased`}>
+        <LoadingIntro />
         {children}
         <Analytics />
       </body>
